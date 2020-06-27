@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiaxuch.excel.mapper.PoiExcelMapper">
+    <select id="getUserInfo" resultType="com.jiaxuch.excel.model.Teacher">
+        SELECT * FROM Teacher
+    </select>
+
+    <insert id="saveUserInfo" parameterType="com.jiaxuch.excel.model.Teacher">
+        INSERT INTO `Teacher` ( `id`, `age`, `flag`, `name`, `birthday`, `money` )
+         VALUES
+        ( #{id}, #{age}, #{flag}, #{name}, #{birthday}, #{money} );
+
+    </insert>
+</mapper>
