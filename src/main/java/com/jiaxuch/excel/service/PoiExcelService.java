@@ -13,7 +13,7 @@ import java.util.List;
  * @data 2020/6/27
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class PoiExcelService {
 
     @Autowired

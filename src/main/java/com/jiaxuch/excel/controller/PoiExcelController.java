@@ -33,7 +33,7 @@ public class PoiExcelController {
     @ResponseBody
     @RequestMapping(value = "/fileUpload",method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public List<Teacher> fileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws Exception {
-        Map map = new HashMap();
+        Map map = new HashMap(6);
         map.put("0", "id");
         map.put("1", "age");
         map.put("2", "flag");
@@ -57,7 +57,7 @@ public class PoiExcelController {
     @RequestMapping(value = "downLoadExcel", method = RequestMethod.GET)
     public void downLoadExcel(HttpServletResponse response) throws Exception {
         List<Teacher> list = poiExcelService.getUserInfo();
-        Map<String, HeaderConfig> title = new HashMap<String, HeaderConfig>();
+        Map<String, HeaderConfig> title = new HashMap<String, HeaderConfig>(6);
         title.put("0", new HeaderConfig("编号", "id"));
         title.put("1", new HeaderConfig("年龄", "age"));
         title.put("2", new HeaderConfig("标识", "flag"));
@@ -66,6 +66,5 @@ public class PoiExcelController {
         title.put("5", new HeaderConfig("余额", "money"));
         String fileName = "teacher.xlsx";
         ExcelParseUtils.parseListToExcel(list,title,fileName,response);
-
     }
 }

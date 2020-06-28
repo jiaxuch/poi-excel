@@ -11,7 +11,18 @@ import java.util.List;
  */
 @Mapper
 public interface PoiExcelMapper {
+    /**
+     * 查找用户信息
+     *
+     * @return
+     */
     List<Teacher> getUserInfo();
 
+    /**
+     * 保存用户数据
+     *
+     * @param teacher
+     * @return
+     */
     int saveUserInfo(Teacher teacher);
 }

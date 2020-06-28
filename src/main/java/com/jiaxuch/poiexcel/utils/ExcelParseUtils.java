@@ -216,7 +216,6 @@ public class ExcelParseUtils {
      */
     private static <T> void handleString(T t, Cell cell, Method method) throws InvocationTargetException, IllegalAccessException {
         String stringCellValue = cell.getStringCellValue();
-        System.out.println(stringCellValue);
         method.invoke(t, stringCellValue);
     }
 
@@ -234,7 +233,6 @@ public class ExcelParseUtils {
     private static <T> void handleBoolean(T t, Cell cell, Class<?> fieldType, Method method) throws InvocationTargetException, IllegalAccessException {
         cell.setCellType(CellType.STRING);
         String stringCellValue = cell.getStringCellValue();
-        System.out.println(stringCellValue);
         //同一类型，直接赋值，否则，转成字符串赋值
         method.invoke(t, stringCellValue);
 
@@ -259,7 +257,6 @@ public class ExcelParseUtils {
             method.invoke(t, data);
         }else {
             String format = dateFormat.format(data);
-            System.out.println(format);
             method.invoke(t, format);
         }
         return dateFormat;
@@ -277,10 +274,7 @@ public class ExcelParseUtils {
      * @throws InvocationTargetException
      */
     private static <T> void handleOutherNumeric(T t, Cell cell, Class<?> fieldType, Method method) throws InvocationTargetException, IllegalAccessException {
-//        cell.setCellType(CellType.STRING);
-//        String cellValue = cell.getStringCellValue();
         double cellValue = cell.getNumericCellValue();
-        System.out.println(cellValue);
         if(compareObjectAndCellType(double.class, fieldType) || compareObjectAndCellType(Double.class, fieldType)){
             method.invoke(t, cellValue);
         }else if(compareObjectAndCellType(int.class, fieldType) || compareObjectAndCellType(Integer.class, fieldType)){
@@ -455,9 +449,7 @@ public class ExcelParseUtils {
         }else if (invoke.getClass() == Date.class){
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String format = dateFormat.format(invoke);
-            System.out.println(format);
             cell.setCellValue(format);
-//            cell.setCellValue((Date) invoke);
         }else {
             cell.setCellValue((String) invoke);
         }
