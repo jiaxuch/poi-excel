@@ -1,4 +1,4 @@
-CREATE TABLE `mybatis`.`Untitled`  (
+CREATE TABLE `mybatis`.`Teacher`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `age` int(11) NULL DEFAULT NULL,
   `flag` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
